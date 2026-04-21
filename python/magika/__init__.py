@@ -24,6 +24,9 @@ Basic usage:
     >>> result = m.identify_bytes(b"# Hello\nprint('world')")
     >>> print(result.output.ct_label)
     'python'
+
+Note: MagikaResult is referenced in __all__ but was not imported from types;
+      removed it to fix the misleading export list.
 """
 
 from magika.magika import Magika
@@ -40,7 +43,6 @@ __license__ = "Apache-2.0"
 
 __all__ = [
     "Magika",
-    "MagikaResult",
     "MagikaOutput",
     "ModelFeatures",
     "ModelOutput",
