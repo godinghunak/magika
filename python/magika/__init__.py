@@ -27,11 +27,16 @@ Basic usage:
 
 Note: MagikaResult is referenced in __all__ but was not imported from types;
       removed it to fix the misleading export list.
+
+Personal fork notes:
+    - Re-exported MagikaResult so callers can type-hint results without
+      importing directly from magika.types.
 """
 
 from magika.magika import Magika
 from magika.types import (
     MagikaOutput,
+    MagikaResult,
     ModelFeatures,
     ModelOutput,
     PredictionMode,
@@ -44,6 +49,7 @@ __license__ = "Apache-2.0"
 __all__ = [
     "Magika",
     "MagikaOutput",
+    "MagikaResult",
     "ModelFeatures",
     "ModelOutput",
     "PredictionMode",
