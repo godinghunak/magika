@@ -32,6 +32,10 @@ Personal fork notes:
       code that compares or filters by label value.
     - Re-exported MagikaError so callers can catch Magika-specific
       exceptions without digging into magika.exceptions.
+    - Re-exported ModelFeatures and ModelOutput for users who want to
+      inspect or mock model internals in tests.
+    - Added VERSION tuple for programmatic version checks (e.g.
+      `if magika.VERSION >= (0, 6, 0): ...`).
 """
 
 from magika.magika import Magika
@@ -55,6 +59,9 @@ __version__ = "0.6.0dev"
 __author__ = "Google LLC"
 __license__ = "Apache-2.0"
 
+# Programmatic version tuple for easy comparisons: `if VERSION >= (0, 6, 0)`
+VERSION = (0, 6, 0)
+
 __all__ = [
     "ContentTypeLabel",
     "Magika",
@@ -63,6 +70,7 @@ __all__ = [
     "ModelFeatures",
     "ModelOutput",
     "PredictionMode",
+    "VERSION",
 ]
 
 if _has_magika_error:
