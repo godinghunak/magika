@@ -21,11 +21,14 @@ rule-based approaches.
 Basic usage:
     >>> from magika import Magika
     >>> m = Magika()
-    >>> result = m.identify_bytes# Hello\nprint('world')result.output.ct_label)
+    >>> result = m.identify_bytes(b"# Hello\nprint('world')")
+    >>> print(result.output.ct_label)
     'python'
-"rom magika.magika import Magika
+"""
+
+from magika.magika import Magika
 from magika.types import (
-    MaMagikaOutput,
+    MagikaOutput,
     ModelFeatures,
     ModelOutput,
     PredictionMode,
