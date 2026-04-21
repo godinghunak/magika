@@ -25,16 +25,16 @@ Basic usage:
     >>> print(result.output.ct_label)
     'python'
 
-Note: MagikaResult is referenced in __all__ but was not imported from types;
-      removed it to fix the misleading export list.
-
 Personal fork notes:
     - Re-exported MagikaResult so callers can type-hint results without
       importing directly from magika.types.
+    - Also re-exported ContentTypeLabel for convenience when writing
+      code that compares or filters by label value.
 """
 
 from magika.magika import Magika
 from magika.types import (
+    ContentTypeLabel,
     MagikaOutput,
     MagikaResult,
     ModelFeatures,
@@ -47,6 +47,7 @@ __author__ = "Google LLC"
 __license__ = "Apache-2.0"
 
 __all__ = [
+    "ContentTypeLabel",
     "Magika",
     "MagikaOutput",
     "MagikaResult",
