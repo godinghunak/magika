@@ -30,6 +30,8 @@ Personal fork notes:
       importing directly from magika.types.
     - Also re-exported ContentTypeLabel for convenience when writing
       code that compares or filters by label value.
+    - Re-exported MagikaError so callers can catch Magika-specific
+      exceptions without digging into magika.exceptions.
 """
 
 from magika.magika import Magika
@@ -41,6 +43,13 @@ from magika.types import (
     ModelOutput,
     PredictionMode,
 )
+
+try:
+    from magika.exceptions import MagikaError
+    _has_magika_error = True
+except ImportError:
+    # MagikaError may not exist in all versions; skip re-export gracefully.
+    _has_magika_error = False
 
 __version__ = "0.6.0dev"
 __author__ = "Google LLC"
@@ -55,3 +64,6 @@ __all__ = [
     "ModelOutput",
     "PredictionMode",
 ]
+
+if _has_magika_error:
+    __all__.append("MagikaError")
