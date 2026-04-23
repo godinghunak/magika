@@ -36,6 +36,8 @@ Personal fork notes:
       inspect or mock model internals in tests.
     - Added VERSION tuple for programmatic version checks (e.g.
       `if magika.VERSION >= (0, 6, 0): ...`).
+    - Added VERSION_STRING as a convenience alias for __version__ so
+      both styles are available without having to remember the dunder.
 """
 
 from magika.magika import Magika
@@ -62,6 +64,10 @@ __license__ = "Apache-2.0"
 # Programmatic version tuple for easy comparisons: `if VERSION >= (0, 6, 0)`
 VERSION = (0, 6, 0)
 
+# Plain string alias so you can do `magika.VERSION_STRING` instead of
+# `magika.__version__` — handy when logging or displaying version info.
+VERSION_STRING = __version__
+
 __all__ = [
     "ContentTypeLabel",
     "Magika",
@@ -71,6 +77,7 @@ __all__ = [
     "ModelOutput",
     "PredictionMode",
     "VERSION",
+    "VERSION_STRING",
 ]
 
 if _has_magika_error:
