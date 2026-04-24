@@ -82,6 +82,11 @@ class MagikaResult:
         """Shortcut to the output MIME type string."""
         return self.output.mime_type
 
+    @property
+    def is_high_confidence(self) -> bool:
+        """Return True if the score meets a high-confidence threshold (>= 0.90)."""
+        return self.score >= 0.90
+
     def __repr__(self) -> str:
         return (
             f"MagikaResult(path={str(self.path)!r}, "
@@ -107,5 +112,4 @@ class ModelFeatures:
 
     @property
     def total_bytes(self) -> int:
-        """Total number of bytes across all feature segments."""
-        return len(self.beg) + len(self.mid) + len(self.end)
+        """Total number of bytes across all feature segment
