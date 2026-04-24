@@ -75,12 +75,10 @@ VERSION = (0, 6, 0)
 VERSION_STRING = __version__
 
 # Minimum score below which I personally treat a detection as unreliable.
-# Example: `if result.output.score < magika.UNKNOWN_SCORE_THRESHOLD: ...`
-# The model's own threshold is typically around 0.5; I prefer a stricter 0.75
-# for my use cases where false positives are more costly than unknowns.
-UNKNOWN_SCORE_THRESHOLD = 0.75
+# Example: `if result.output.score < magika.UNKNOWN_SCORE_THRESHOLD: skip()`
+UNKNOWN_SCORE_THRESHOLD = 0.40
 
-# Score above which I consider a detection high-confidence and act on it
-# without further validation (e.g. skipping a secondary rule-based check).
-# Example: `if result.output.score >= magika.HIGH_CONFIDENCE_THRESHOLD: ...`
-HIGH_CONFIDENCE_THRESHOLD = 0.90
+# Score above which I consider a detection reliable enough to act on without
+# further validation. Bumped from 0.90 to 0.85 after finding that 0.90 was
+# too aggressive and caused me to miss valid detections in my test corpus.
+HIGH_CONFIDENCE_THRESHOLD = 0.85
