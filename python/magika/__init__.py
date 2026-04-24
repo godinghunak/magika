@@ -41,6 +41,9 @@ Personal fork notes:
     - Added UNKNOWN_SCORE_THRESHOLD constant: minimum confidence score
       below which a result should be treated as effectively unknown.
       Useful when post-processing results in calling code.
+    - Added HIGH_CONFIDENCE_THRESHOLD constant: score above which I
+      consider a detection reliable enough to act on without further
+      validation. Set to 0.90 for my stricter use cases.
 """
 
 from magika.magika import Magika
@@ -77,18 +80,7 @@ VERSION_STRING = __version__
 # for my use cases where false positives are more costly than unknowns.
 UNKNOWN_SCORE_THRESHOLD = 0.75
 
-__all__ = [
-    "ContentTypeLabel",
-    "Magika",
-    "MagikaOutput",
-    "MagikaResult",
-    "ModelFeatures",
-    "ModelOutput",
-    "PredictionMode",
-    "UNKNOWN_SCORE_THRESHOLD",
-    "VERSION",
-    "VERSION_STRING",
-]
-
-if _has_magika_error:
-    __all__.append("MagikaError")
+# Score above which I consider a detection high-confidence and act on it
+# without further validation (e.g. skipping a secondary rule-based check).
+# Example: `if result.output.score >= magika.HIGH_CONFIDENCE_THRESHOLD: ...`
+HIGH_CONFIDENCE_THRESHOLD = 0.90
